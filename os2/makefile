@@ -1,0 +1,149 @@
+#	 makefile for
+#		 MicroEMACS 3.12 and EMX-GCC 
+
+# modify the following lines with the proper relative directories
+# directory to put the file 
+BIND = c:/os2/apps
+# Name of the target (*.exe)
+NEXE = memacs.exe
+# Name of your favorite DLL library path (see LIBPATH defined in config.sys)
+DLLD = c:/os2/apps/dll
+# object file directory
+OBJD = .
+# source file directory
+SRCD = ../src
+# header file directory
+HDIR = ../h
+# system include directory
+INCD = $(C_INCLUDE_PATH)
+# Change next definition to .obj if you want to use .OBJ files
+O = .o
+
+# options and arguments to the C compiler
+
+CC = gcc
+CFLAGS= -Zmtd -O -I./ -I$(HDIR) 
+LDFLAGS= -Zmtd -s
+
+# list of header files
+
+HFILES = estruct.h $(HDIR)/edef.h $(HDIR)/efunc.h $(HDIR)/epath.h $(HDIR)/ebind.h $(HDIR)/eproto.h
+
+#list of source files
+
+F1 = $(OBJD)/basic$O $(OBJD)/bind$O $(OBJD)/buffer$O
+F2 = $(OBJD)/char$O $(OBJD)/crypt$O $(OBJD)/display$O  $(OBJD)/dolock$O
+F3 = $(OBJD)/eval$O $(OBJD)/exec$O $(OBJD)/file$O
+F4 = $(OBJD)/fileio$O $(OBJD)/os2$O $(OBJD)/input$O $(OBJD)/keyboard$O
+F5 = $(OBJD)/isearch$O $(OBJD)/line$O $(OBJD)/lock$O $(OBJD)/mouse$O
+F6 = $(OBJD)/main$O $(OBJD)/os2npm$O $(OBJD)/screen$O #$(OBJD)/mouse$O 
+F7 = $(OBJD)/random$O $(OBJD)/region$O $(OBJD)/search$O $(OBJD)/replace$O
+F8 = $(OBJD)/tags$O $(OBJD)/window$O $(OBJD)/word$O
+
+# product list
+
+all: $(NEXE)
+
+# compilation rules
+
+$(OBJD)/basic$O: $(SRCD)/basic.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/basic$O $(SRCD)/basic.c
+
+$(OBJD)/bind$O: $(SRCD)/bind.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/bind$O $(SRCD)/bind.c
+
+$(OBJD)/buffer$O: $(SRCD)/buffer.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/buffer$O $(SRCD)/buffer.c
+
+$(OBJD)/char$O: $(SRCD)/char.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/char$O $(SRCD)/char.c
+
+$(OBJD)/crypt$O: $(SRCD)/crypt.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/crypt$O $(SRCD)/crypt.c
+
+$(OBJD)/cmdfix$O: $(SRCD)/cmdfix.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/cmdfix$O $(SRCD)/cmdfix.c
+
+$(OBJD)/display$O: $(SRCD)/display.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/display$O $(SRCD)/display.c
+
+$(OBJD)/dolock$O: $(SRCD)/dolock.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/dolock$O $(SRCD)/dolock.c
+
+$(OBJD)/eval$O: $(SRCD)/eval.c $(HFILES) $(HDIR)/evar.h
+	$(CC) $(CFLAGS) -c -o $(OBJD)/eval$O $(SRCD)/eval.c
+
+$(OBJD)/exec$O: $(SRCD)/exec.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/exec$O $(SRCD)/exec.c
+
+$(OBJD)/file$O: $(SRCD)/file.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/file$O $(SRCD)/file.c
+
+$(OBJD)/fileio$O: $(SRCD)/fileio.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/fileio$O $(SRCD)/fileio.c
+
+$(OBJD)/keyboard$O: $(SRCD)/keyboard.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/keyboard$O $(SRCD)/keyboard.c
+
+$(OBJD)/os2$O: $(SRCD)/os2.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/os2$O $(SRCD)/os2.c
+
+$(OBJD)/input$O: $(SRCD)/input.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/input$O $(SRCD)/input.c
+
+$(OBJD)/isearch$O: $(SRCD)/isearch.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/isearch$O $(SRCD)/isearch.c
+
+$(OBJD)/line$O: $(SRCD)/line.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/line$O $(SRCD)/line.c
+
+$(OBJD)/lock$O: $(SRCD)/lock.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/lock$O $(SRCD)/lock.c
+
+$(OBJD)/main$O: $(SRCD)/main.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/main$O $(SRCD)/main.c
+
+$(OBJD)/mouse$O: $(SRCD)/mouse.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/mouse$O $(SRCD)/mouse.c
+
+$(OBJD)/os2npm$O: $(SRCD)/os2npm.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/os2npm$O $(SRCD)/os2npm.c
+
+$(OBJD)/random$O: $(SRCD)/random.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/random$O $(SRCD)/random.c
+
+$(OBJD)/region$O: $(SRCD)/region.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/region$O $(SRCD)/region.c
+
+$(OBJD)/search$O: $(SRCD)/search.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/search$O $(SRCD)/search.c
+
+$(OBJD)/replace$O: $(SRCD)/replace.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/replace$O $(SRCD)/replace.c
+
+$(OBJD)/screen$O: $(SRCD)/screen.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/screen$O $(SRCD)/screen.c
+
+$(OBJD)/tags$O: $(SRCD)/tags.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/tags$O $(SRCD)/tags.c
+
+$(OBJD)/window$O: $(SRCD)/window.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/window$O $(SRCD)/window.c
+
+$(OBJD)/word$O: $(SRCD)/word.c $(HFILES)
+	$(CC) $(CFLAGS) -c -o $(OBJD)/word$O $(SRCD)/word.c
+
+$(NEXE): $(F1) $(F2) $(F3) $(F4) $(F5) $(F6) $(F7) $(F8)
+	$(CC) $(LDFLAGS) -o $(NEXE) emacs.def $(F1) $(F2) $(F3) $(F4) $(F5) $(F6) $(F7) $(F8)
+
+install:
+	copy *.dll $(DLLD)
+	copy $(NEXE) $(BIND)\$(NEXE)
+	copy ..\emacs.rc $(BIND)
+	copy ..\*.cmd $(BIND)
+	copy ..\ehelp?.txt $(BIND)
+
+clean:
+	if exist *$O del *$O
+	if exist $(NEXE) del $(NEXE)
+	if exist core del core

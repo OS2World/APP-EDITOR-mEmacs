@@ -1,0 +1,46 @@
+mEmacs for OS/2 2.x
+
+This is a 32 Bit version of æ-emacs 3.12 which also includes mouse
+support. The last time I tried to use the mouse I had some problems with
+the appearing of the mouse cursor and I couldn't find the error. Now I
+just recompiled the sources with an additional define in os2npm.c
+(INCL_DOSDEVIOCTL) and a new version of EMX-GCC. To my surprise
+everthing worked fine and no additional changes were necessary. Perhaps
+there was a bug in the earlier version of the emx OS/2 libraries. Since
+I have lost the original sources a context diff file of the changes
+isn't any longer included in this package. All changes become valid if
+OS2 is defined as 2 in the header file os2/estruct.h and the compiler
+used is emx-gcc. If you want to use another compiler you will have to 
+add some code for a 16:16 bit to a 32 bit pointer conversion in the file
+src/os2npm.c at line 699.
+
+Note: I am NOT the author of this program. Please send any questions or
+comments about the editor itself to Daniel Lawrence mentioned in the
+file "readme" in the same directory as this file. 
+
+In difference to the last release of the package the editor is compiled
+with -O instead of -O2. This is done because -O resultes in a shorter
+executable and the gain of performance with -O2 isn't significant. I
+also changed the name from emacs.exe to memacs.exe to avoid conflicts
+with real (big and fat) emacs.
+
+Brief installation guide:
+
+To install this program you can use the makefile located in the
+directory ./os2. You have to edit it if you want to specify other target
+directories than c:/os2/apps for os2emacs.exe and c:/os2/apps/dll for
+the runtime library emx.dll and emxlibc.dll. Be sure that OS/2 can find
+these libraries. To use the command files of emacs (*.cmd - this are no
+batch jobs or REXX command files) or the online help the environment
+variable DPATH has to point to the directory where they are installed. 
+
+If you use the default options for installing and didn't change the
+CONFIG.SYS entry which defines this variable you don't have to do
+anything else than calling make with the parameter "install".
+
+	Ralf Seidel (10/93)
+	eMail: seidel3@wrcs3.urz.uni-wuppertal.de
+
+P.S.: As you will have recognized my english isn't the best. Comments
+and/or corrections are welcome.
+
