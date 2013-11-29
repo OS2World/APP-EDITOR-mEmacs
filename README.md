@@ -9,7 +9,8 @@ LICENSE
 
 COMPILE TOOLS
 ===============
-* 
+* GCC
+* EMX
 
 AUTHORS
 ===============
